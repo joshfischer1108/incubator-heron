@@ -28,6 +28,7 @@ public class ObjectDefinition {
   private List<PropertyDefinition> properties;
   private List<ConfigurationMethodDefinition> configMethods;
   private boolean hasReferences;
+  private boolean hasEnums;
 
   public List<PropertyDefinition> getProperties() {
     return properties;
@@ -86,6 +87,9 @@ public class ObjectDefinition {
         } else if (map.containsKey("reflist") && map.size() == 1) {
           newVal.add(new BeanListReference((List<String>) map.get("reflist")));
           this.hasReferences = true;
+        } else if (map.containsKey("enum") && map.size() == 1) {
+          //Todo instantiate enum here
+          this.hasEnums = true;
         } else {
           newVal.add(obj);
         }
