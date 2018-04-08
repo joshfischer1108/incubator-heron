@@ -23,19 +23,36 @@ public final class NomadConstants {
   private NomadConstants() {
   }
 
+  public enum NomadDriver {
+    RAW_EXEC("raw_exec"),
+    DOCKER("docker");
+
+    private String name;
+    NomadDriver(String name) {
+      this.name = name;
+    }
+
+    public String getName() {
+      return name;
+    }
+  }
+
   public static final String NOMAD_TOPOLOGY_ID = "topology.id";
   public static final String NOMAD_TOPOLOGY_NAME = "topology.name";
   public static final String NOMAD_TOPOLOGY_CONTAINER_INDEX = "container.index";
 
   public static final String JOB_LINK = "/ui/jobs";
+  public static final String HOST = "HOST";
+  public static final String NETWORK_MODE = "network_mode";
 
-  public static final String NOMAD_RAW_EXEC = "raw_exec";
   public static final String NOMAD_TASK_COMMAND = "command";
   public static final String NOMAD_TASK_COMMAND_ARGS = "args";
+  public static final String NOMAD_IMAGE = "image";
 
   public static final String NOMAD_DEFAULT_DATACENTER = "dc1";
   public static final String SHELL_CMD = "/bin/sh";
   public static final String NOMAD_HERON_SCRIPT_NAME = "run_heron_executor.sh";
+  public static final String NOMAD_SERVICE_CHECK_TYPE = "tcp";
 
   public static final String HERON_NOMAD_WORKING_DIR = "HERON_NOMAD_WORKING_DIR";
   public static final String HERON_USE_CORE_PACKAGE_URI = "HERON_USE_CORE_PACKAGE_URI";
@@ -73,6 +90,9 @@ public final class NomadConstants {
   // port number the start with when more than one port needed for remote debugging
   public static final String JVM_REMOTE_DEBUGGER_PORT = String.format("${NOMAD_PORT_%s}",
       SchedulerUtils.ExecutorPort.JVM_REMOTE_DEBUGGER_PORTS.getName());
+  // port for metrics webserver (AbstractWebSink)
+  public static final String METRICS_PORT = "metrics_port";
+  public static final String METRICS_PORT_FILE = "METRICS_PORT_FILE";
   public static final Map<SchedulerUtils.ExecutorPort, String> EXECUTOR_PORTS = new HashMap<>();
 
   static {

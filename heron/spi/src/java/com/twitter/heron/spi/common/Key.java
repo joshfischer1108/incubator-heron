@@ -121,6 +121,8 @@ public enum Key {
   STATEFUL_STORAGE_CONF                    ("heron.statefulstorage.config", Type.MAP),
   STATEFUL_STORAGE_CUSTOM_CLASSPATH        ("heron.statefulstorage.custom.classpath", Type.STRING),
 
+  // keys for metricscache manager
+  METRICSCACHEMGR_MODE       ("heron.topology.metricscachemgr.mode", "disabled"),
   // keys for health manager
   HEALTHMGR_MODE             ("heron.topology.healthmgr.mode", Type.STRING),
 
@@ -162,6 +164,10 @@ public enum Key {
 
   //keys for heron configuration files on the cluster
   OVERRIDE_YAML("heron.config.file.override.yaml",  "${HERON_CONF}/override.yaml"),
+
+  // Path to the config overrides passed into the apiserver. Only applicable to submitting
+  // topologies via apiserver
+  APISERVER_OVERRIDE_YAML("heron.apiserver.file.override.yaml", Type.STRING),
 
   //keys for config provided user binaries
   EXECUTOR_BINARY       ("heron.binaries.executor",        "${HERON_BIN}/heron-executor"),

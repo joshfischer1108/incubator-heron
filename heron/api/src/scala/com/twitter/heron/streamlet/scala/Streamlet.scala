@@ -13,12 +13,10 @@
 //  limitations under the License.
 package com.twitter.heron.streamlet.scala
 
-import com.twitter.heron.streamlet.{KeyValue, KeyedWindow}
-
-// TODO: This Java Streamlet API references will be changed with Scala versions when they are ready
 import com.twitter.heron.streamlet.{
   JoinType,
-  SerializableTransformer,
+  KeyValue,
+  KeyedWindow,
   WindowConfig
 }
 
@@ -86,7 +84,7 @@ trait Streamlet[R] {
     *
     * @param flatMapFn The FlatMap Function that should be applied to each element
     */
-  def flatMap[T](flatMapFn: R => _ <: Iterable[_ <: T]): Streamlet[T]
+  def flatMap[T](flatMapFn: R => Iterable[_ <: T]): Streamlet[T]
 
   /**
     * Return a new Streamlet by applying the filterFn on each element of this streamlet
@@ -138,7 +136,7 @@ trait Streamlet[R] {
       thisKeyExtractor: R => K,
       otherKeyExtractor: S => K,
       windowCfg: WindowConfig,
-      joinFunction: (R, S) => _ <: T): Streamlet[KeyValue[KeyedWindow[K], T]]
+      joinFunction: (R, S) => T): Streamlet[KeyValue[KeyedWindow[K], T]]
 
   /**
     * Return a new KVStreamlet by joining 'this streamlet with ‘other’ streamlet. The type of joining
@@ -162,7 +160,7 @@ trait Streamlet[R] {
       otherKeyExtractor: S => K,
       windowCfg: WindowConfig,
       joinType: JoinType,
-      joinFunction: (R, S) => _ <: T): Streamlet[KeyValue[KeyedWindow[K], T]]
+      joinFunction: (R, S) => T): Streamlet[KeyValue[KeyedWindow[K], T]]
 
   /**
     * Return a new Streamlet accumulating tuples of this streamlet over a Window defined by
@@ -199,7 +197,7 @@ trait Streamlet[R] {
       keyExtractor: R => K,
       windowCfg: WindowConfig,
       identity: T,
-      reduceFn: (T, R) => _ <: T): Streamlet[KeyValue[KeyedWindow[K], T]]
+      reduceFn: (T, R) => T): Streamlet[KeyValue[KeyedWindow[K], T]]
 
   /**
     * Returns a new Streamlet that is the union of this and the ‘other’ streamlet. Essentially

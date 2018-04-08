@@ -297,6 +297,10 @@ public class Context {
     return cfg.getStringValue(Key.OVERRIDE_YAML);
   }
 
+  public static String apiserverOverrideFile(Config cfg) {
+    return cfg.getStringValue(Key.APISERVER_OVERRIDE_YAML);
+  }
+
   public static String executorBinary(Config cfg) {
     return cfg.getStringValue(Key.EXECUTOR_BINARY);
   }
@@ -339,4 +343,9 @@ public class Context {
     Object o = statefulStorageConfig.get(Key.STATEFUL_STORAGE_CUSTOM_CLASSPATH.value());
     return o == null ? "" : (String) o;
   }
+
+  public static String metricscacheMgrMode(Config cfg) {
+    return cfg.getStringValue(Key.METRICSCACHEMGR_MODE);
+  }
+
 }
