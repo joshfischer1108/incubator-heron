@@ -11,21 +11,9 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-package com.twitter.heron.sql;
+package com.twitter.heron.sql.parser;
 
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import static junit.framework.TestCase.assertTrue;
-
-@RunWith(MockitoJUnitRunner.class)
-public class SqlTest {
-
-
-  @Test
-  public void testThatTestWorks() {
-    assertTrue(true);
-  }
+public class HeronParser {
+  public static final int DEFAULT_IDENTIFIER_MAX_LENGTH = 128;
+  private final HeronParserImpl impl;
 }

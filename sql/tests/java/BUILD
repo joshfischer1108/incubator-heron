@@ -7,7 +7,7 @@ test_deps_files = [
 
 java_test(
     name = "SqlTest",
-    srcs = glob(["com/twitter/heron/sql/SqlTest.java"]),
+    srcs = glob(["com/twitter/heron/sql/HeronSqlRunnerTest.java"]),
     deps = test_deps_files,
     size = "small",
 )

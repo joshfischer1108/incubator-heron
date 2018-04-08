@@ -13,9 +13,19 @@
 //  limitations under the License.
 package com.twitter.heron.sql;
 
-public class Sql {
 
-  public static void main(String args) {
-    System.out.println("This is the starting point");
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import static junit.framework.TestCase.assertTrue;
+
+@RunWith(MockitoJUnitRunner.class)
+public class HeronSqlRunnerTest {
+
+
+  @Test
+  public void testThatTestWorks() {
+    assertTrue(true);
   }
 }

@@ -21,6 +21,6 @@ genrule(
     ],
     cmd = "\n".join([
         'export INSTALL_DIR=$$(pwd)/$(@D)',
-        '$(location //third_party/java:javacc) -OUTPUT_DIRECTORY=$$INSTALL_DIR $<',
+        '$(location //third_party/java:javacc) -lookAhead=2 -OUTPUT_DIRECTORY=$$INSTALL_DIR $<',
     ]),
 )
