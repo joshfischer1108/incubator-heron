@@ -511,6 +511,12 @@ new_http_archive(
 )
 # end java cc
 
+# calcite
+maven_jar(
+    name = "apache_calcite",
+    artifact = "org.apache.calcite:calcite-core:1.16.0"
+)
+
 # Kubernetes java client
 kubernetes_client_version = "1.0.0-beta1"
 squareup_okhttp_version = "2.7.5"

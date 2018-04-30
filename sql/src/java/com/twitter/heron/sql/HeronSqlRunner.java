@@ -26,7 +26,6 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.storm.utils.Utils;
 
 public class HeronSqlRunner {
   private static final String OPTION_SQL_FILE_SHORT = "f";
@@ -48,6 +47,7 @@ public class HeronSqlRunner {
     String filePath = commandLine.getOptionValue(OPTION_SQL_FILE_LONG);
     List<String> stmts = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
     HeronSql sql = HeronSql.construct();
+
 //    @SuppressWarnings("unchecked")
 //    Map<String, Object> conf = Utils.readStormConfig();
   }

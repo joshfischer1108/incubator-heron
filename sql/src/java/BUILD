@@ -2,6 +2,11 @@ licenses(["notice"])
 
 package(default_visibility = ["//visibility:public"])
 
+sql_deps = [
+    #insert caclite dependency here
+    "@apache_calcite//jar",
+     "@commons_cli_commons_cli//jar",
+]
 generated_files = [
     "ParseException.java",
     "Token.java",
@@ -24,3 +29,10 @@ genrule(
         '$(location //third_party/java:javacc) -lookAhead=2 -OUTPUT_DIRECTORY=$$INSTALL_DIR $<',
     ]),
 )
+
+java_library(
+    name = "sql-java",
+    srcs = glob(["com/twitter/heron/sql/*.java"]),
+    deps = sql_deps
+)
+

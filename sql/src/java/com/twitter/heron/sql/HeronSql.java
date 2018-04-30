@@ -15,7 +15,6 @@ package com.twitter.heron.sql;
 
 import java.util.Map;
 
-import org.apache.storm.StormSubmitter;
 
 /**
  * The StormSql class provides standalone, interactive interfaces to execute
