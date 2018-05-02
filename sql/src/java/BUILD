@@ -3,9 +3,9 @@ licenses(["notice"])
 package(default_visibility = ["//visibility:public"])
 
 sql_deps = [
-    #insert caclite dependency here
     "@apache_calcite//jar",
-     "@commons_cli_commons_cli//jar",
+    "@commons_cli_commons_cli//jar",
+    "@apache_calcite_avatica//jar",
 ]
 generated_files = [
     "ParseException.java",

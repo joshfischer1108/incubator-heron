@@ -517,6 +517,10 @@ maven_jar(
     artifact = "org.apache.calcite:calcite-core:1.16.0"
 )
 
+maven_jar(
+    name = "apache_calcite_avatica",
+    artifact = "org.apache.calcite.avatica:avatica-core:1.11.0"
+)
 # Kubernetes java client
 kubernetes_client_version = "1.0.0-beta1"
 squareup_okhttp_version = "2.7.5"
