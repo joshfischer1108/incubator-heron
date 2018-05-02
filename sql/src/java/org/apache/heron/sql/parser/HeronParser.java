@@ -11,12 +11,9 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-package com.twitter.heron.sql;
+package org.apache.heron.sql.parser;
 
-class HeronSqlImpl extends HeronSql {
-  @Override
-  public void explain(Iterable<String> statements) throws Exception {
-
-  }
-
+public class HeronParser {
+  public static final int DEFAULT_IDENTIFIER_MAX_LENGTH = 128;
+  private final HeronParserImpl impl;
 }
