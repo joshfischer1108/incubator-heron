@@ -13,7 +13,6 @@
 //  limitations under the License.
 package com.twitter.heron.sql;
 
-import java.util.Map;
 
 
 /**

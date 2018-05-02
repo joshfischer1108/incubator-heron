@@ -17,18 +17,18 @@ generated_files = [
     "HeronSqlParserImplTokenManager.java",
 ]
 
-genrule(
-    name = "parser-srcs",
-    srcs = ["com/twitter/heron/sql/parser/impl/Parser.jj"],
-    outs = generated_files, 
-    tools = [
-        "//third_party/java:javacc",
-    ],
-    cmd = "\n".join([
-        'export INSTALL_DIR=$$(pwd)/$(@D)',
-        '$(location //third_party/java:javacc) -lookAhead=2 -OUTPUT_DIRECTORY=$$INSTALL_DIR $<',
-    ]),
-)
+#genrule(
+#    name = "parser-srcs",
+#    srcs = ["com/twitter/heron/sql/parser/impl/Parser.jj"],
+#    outs = generated_files, 
+#    tools = [
+#        "//third_party/java:javacc",
+#    ],
+#    cmd = "\n".join([
+#        'export INSTALL_DIR=$$(pwd)/$(@D)',
+#        '$(location //third_party/java:javacc) -lookAhead=2 -OUTPUT_DIRECTORY=$$INSTALL_DIR $<',
+#    ]),
+#)
 
 java_library(
     name = "sql-java",

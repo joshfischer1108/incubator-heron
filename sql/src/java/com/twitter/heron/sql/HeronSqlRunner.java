@@ -18,7 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -27,6 +26,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+@SuppressWarnings("HideUtilityClassConstructor")
 public class HeronSqlRunner {
   private static final String OPTION_SQL_FILE_SHORT = "f";
   private static final String OPTION_SQL_FILE_LONG = "file";
@@ -56,14 +56,17 @@ public class HeronSqlRunner {
     System.out.println(message);
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp("storm-sql-runner ", options);
-    System.exit(1);
+//    System.exit(1);
   }
 
   private static Options buildOptions() {
     Options options = new Options();
-    options.addOption(OPTION_SQL_FILE_SHORT, OPTION_SQL_FILE_LONG, true, "REQUIRED SQL file which has sql statements");
-    options.addOption(OPTION_SQL_TOPOLOGY_NAME_SHORT, OPTION_SQL_TOPOLOGY_NAME_LONG, true, "Topology name to submit");
-    options.addOption(OPTION_SQL_EXPLAIN_SHORT, OPTION_SQL_EXPLAIN_LONG, false, "Activate explain mode (topology name will be ignored)");
+    options.addOption(OPTION_SQL_FILE_SHORT, OPTION_SQL_FILE_LONG,
+        true, "REQUIRED SQL file which has sql statements");
+    options.addOption(OPTION_SQL_TOPOLOGY_NAME_SHORT, OPTION_SQL_TOPOLOGY_NAME_LONG,
+        true, "Topology name to submit");
+    options.addOption(OPTION_SQL_EXPLAIN_SHORT, OPTION_SQL_EXPLAIN_LONG,
+        false, "Activate explain mode (topology name will be ignored)");
     return options;
   }
 }
