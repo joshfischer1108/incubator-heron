@@ -18,7 +18,31 @@
  */
 package org.apache.heron.sql.parser;
 
+import java.io.StringReader;
+
+import com.google.common.annotations.VisibleForTesting;
+
+import org.apache.calcite.config.Lex;
+import org.apache.heron.sql.parser.impl.HeronSqlParserImpl;
+
 public class HeronParser {
   public static final int DEFAULT_IDENTIFIER_MAX_LENGTH = 128;
-  private final HeronParserImpl impl;
+  private final HeronSqlParserImpl impl;
+
+  public HeronParser(String s) {
+    this.impl = new HeronSqlParserImpl(new StringReader(s));
+    this.impl.setTabSize(1);
+    this.impl.setQuotedCasing(Lex.ORACLE.quotedCasing);
+    this.impl.setUnquotedCasing(Lex.ORACLE.unquotedCasing);
+    this.impl.setIdentifierMaxLength(DEFAULT_IDENTIFIER_MAX_LENGTH);
+    /*
+     *  By default parser uses [ ] for quoting identifiers. Switching to DQID (double quoted identifiers)
+     *  is needed for array and map access (m['x'] = 1 or arr[2] = 10 etc) to work.
+     */
+    this.impl.switchTo("DQID");
+  }
+  @VisibleForTesting
+  public HeronSqlParserImpl impl() {
+    return impl;
+  }
 }

@@ -20,17 +20,61 @@ package org.apache.heron.sql;
 
 import java.util.Map;
 
+import org.apache.calcite.sql.SqlNode;
+import org.apache.heron.sql.parser.HeronParser;
+import org.apache.heron.sql.parser.SqlCreateFunction;
+import org.apache.heron.sql.parser.SqlCreateTable;
+
 public class HeronSqlImpl extends HeronSql {
 
+  private final HeronSqlContext sqlContext;
+
+  public HeronSqlImpl() {
+    sqlContext = new HeronSqlContext();
+  }
 
   @Override
   public void submit(String name, Iterable<String> statements,
                      Map<String, Object> topoConf) throws Exception {
+    for (String sql: statements) {
+      HeronParser parser = new HeronParser(sql);
+      SqlNode node = parser.impl().parseSqlStmtEof();
+      if (node instanceof SqlCreateTable) {
+        sqlContext.interpretCreateTable((SqlCreateTable) node);
+      } else if (node instanceof SqlCreateFunction) {
+        sqlContext.interpretCreateFunction((SqlCreateFunction) node);
+      } else {
+        // Topology statements have been parsed
+        // Create Heron Topology Here
+      }
+    }
 
   }
 
   @Override
   public void explain(Iterable<String> statements) throws Exception {
+    for (String sql : statements) {
+      HeronParser parser = new HeronParser(sql);
+      SqlNode node = parser.impl().parseSqlStmtEof();
 
+      System.out.println("===========================================================");
+      System.out.println("query>");
+      System.out.println(sql);
+      System.out.println("-----------------------------------------------------------");
+
+      if (node instanceof SqlCreateTable) {
+        sqlContext.interpretCreateTable((SqlCreateTable) node);
+        System.out.println("No plan presented on DDL");
+      } else if (node instanceof SqlCreateFunction) {
+        sqlContext.interpretCreateFunction((SqlCreateFunction) node);
+        System.out.println("No plan presented on DDL");
+      } else {
+        String plan = sqlContext.explain(sql);
+        System.out.println("plan>");
+        System.out.println(plan);
+      }
+
+      System.out.println("===========================================================");
+    }
   }
 }
