@@ -19,19 +19,19 @@
 package org.apache.heron.sql;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+//import java.nio.charset.StandardCharsets;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
+//import java.util.List;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
+//import org.apache.commons.cli.CommandLine;
+//import org.apache.commons.cli.CommandLineParser;
+//import org.apache.commons.cli.DefaultParser;
+//import org.apache.commons.cli.HelpFormatter;
+//import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-@SuppressWarnings("HideUtilityClassConstructor")
+@SuppressWarnings({"HideUtilityClassConstructor", "unchecked"})
 public class HeronSqlRunner {
   private static final String OPTION_SQL_FILE_SHORT = "f";
   private static final String OPTION_SQL_FILE_LONG = "file";
@@ -39,39 +39,50 @@ public class HeronSqlRunner {
   private static final String OPTION_SQL_TOPOLOGY_NAME_LONG = "topology";
   private static final String OPTION_SQL_EXPLAIN_SHORT = "e";
   private static final String OPTION_SQL_EXPLAIN_LONG = "explain";
+
   public static void main(String[] args) throws ParseException, IOException {
-    System.out.println("This is the starting point");
-    Options options = buildOptions();
-    CommandLineParser parser = new DefaultParser();
-    CommandLine commandLine = parser.parse(options, args);
-
-    if (!commandLine.hasOption(OPTION_SQL_FILE_LONG)) {
-      printUsageAndExit(options, OPTION_SQL_FILE_LONG + " is required");
-    }
-
-    String filePath = commandLine.getOptionValue(OPTION_SQL_FILE_LONG);
-    List<String> stmts = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
-    HeronSql sql = HeronSql.construct();
-
-//    @SuppressWarnings("unchecked")
+    System.out.println("hello");
+//    Options options = buildOptions();
+//    CommandLineParser parser = new DefaultParser();
+//    CommandLine commandLine = parser.parse(options, args);
+//
+//    if (!commandLine.hasOption(OPTION_SQL_FILE_LONG)) {
+//      printUsageAndExit(options, OPTION_SQL_FILE_LONG + " is required");
+//    }
+//
+//    String filePath = commandLine.getOptionValue(OPTION_SQL_FILE_LONG);
+//    List<String> stmts = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
+//    StormSql sql = HeronSql.construct();
 //    Map<String, Object> conf = Utils.readStormConfig();
+//
+//    if (commandLine.hasOption(OPTION_SQL_EXPLAIN_LONG)) {
+//      sql.explain(stmts);
+//    } else if (commandLine.hasOption(OPTION_SQL_TOPOLOGY_NAME_LONG)) {
+//      String topoName = commandLine.getOptionValue(OPTION_SQL_TOPOLOGY_NAME_LONG);
+//      SubmitOptions submitOptions = new SubmitOptions(TopologyInitialStatus.ACTIVE);
+//      sql.submit(topoName, stmts, conf, submitOptions, null, null);
+//    } else {
+//      printUsageAndExit(options, "Either " + OPTION_SQL_TOPOLOGY_NAME_LONG
+// + " or " + OPTION_SQL_EXPLAIN_LONG +
+//          " must be presented");
+//    }
   }
 
-  private static void printUsageAndExit(Options options, String message) {
-    System.out.println(message);
-    HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp("storm-sql-runner ", options);
-//    System.exit(1);
-  }
+//  private static void printUsageAndExit(Options options, String message) {
+//    System.out.println(message);
+//    HelpFormatter formatter = new HelpFormatter();
+//    formatter.printHelp("storm-sql-runner ", options);
+////    System.exit(1);
+//  }
 
-  private static Options buildOptions() {
-    Options options = new Options();
-    options.addOption(OPTION_SQL_FILE_SHORT, OPTION_SQL_FILE_LONG,
-        true, "REQUIRED SQL file which has sql statements");
-    options.addOption(OPTION_SQL_TOPOLOGY_NAME_SHORT, OPTION_SQL_TOPOLOGY_NAME_LONG,
-        true, "Topology name to submit");
-    options.addOption(OPTION_SQL_EXPLAIN_SHORT, OPTION_SQL_EXPLAIN_LONG,
-        false, "Activate explain mode (topology name will be ignored)");
-    return options;
-  }
+//  private static Options buildOptions() {
+//    Options options = new Options();
+//    options.addOption(OPTION_SQL_FILE_SHORT, OPTION_SQL_FILE_LONG,
+//        true, "REQUIRED SQL file which has sql statements");
+//    options.addOption(OPTION_SQL_TOPOLOGY_NAME_SHORT, OPTION_SQL_TOPOLOGY_NAME_LONG,
+//        true, "Topology name to submit");
+//    options.addOption(OPTION_SQL_EXPLAIN_SHORT, OPTION_SQL_EXPLAIN_LONG,
+//        false, "Activate explain mode (topology name will be ignored)");
+//    return options;
+//  }
 }
