@@ -32,7 +32,7 @@ generated_files = [
 
 java_library(
     name = "sql-java",
-    srcs = glob(["com/twitter/heron/sql/*.java"]),
+    srcs = glob(["org/apach/heron/sql/*.java"]),
     deps = sql_deps
 )
 
