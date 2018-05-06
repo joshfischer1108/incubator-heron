@@ -19,12 +19,14 @@
 package org.apache.heron.sql;
 
 
+import java.util.Map;
+
 
 /**
- * The StormSql class provides standalone, interactive interfaces to execute
+ * The HeronSql class provides standalone, interactive interfaces to execute
  * SQL statements over streaming data.
  * <p>
- * The StormSql class is stateless. The user needs to submit the data
+ * The HeronSql class is stateless. The user needs to submit the data
  * definition language (DDL) statements and the query statements in the same
  * batch.
  */
@@ -32,10 +34,9 @@ public abstract class HeronSql {
   /**
    * Submit the SQL statements to Nimbus and run it as a topology.
    */
-//  public abstract void submit(
-//      String name, Iterable<String> statements, Map<String, Object> topoConf, SubmitOptions opts,
-//      StormSubmitter.ProgressListener progressListener, String asUser)
-//      throws Exception;
+  public abstract void submit(
+      String name, Iterable<String> statements, Map<String, Object> topoConf)
+      throws Exception;
 
   /**
    * Print out query plan for each query.

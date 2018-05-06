@@ -18,10 +18,19 @@
  */
 package org.apache.heron.sql;
 
-class HeronSqlImpl extends HeronSql {
+import java.util.Map;
+
+public class HeronSqlImpl extends HeronSql {
+
+
+  @Override
+  public void submit(String name, Iterable<String> statements,
+                     Map<String, Object> topoConf) throws Exception {
+
+  }
+
   @Override
   public void explain(Iterable<String> statements) throws Exception {
 
   }
-
 }
