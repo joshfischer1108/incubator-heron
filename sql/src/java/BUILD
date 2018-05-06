@@ -32,7 +32,6 @@ generated_files = [
 
 java_library(
     name = "sql-java",
-    srcs = glob(["org/apach/heron/sql/*.java"]),
-    deps = sql_deps
+    srcs = glob(["org/apache/heron/sql/*.java"]),
+    deps = sql_deps,
 )
-

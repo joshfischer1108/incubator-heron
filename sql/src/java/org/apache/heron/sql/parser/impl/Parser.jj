@@ -8,11 +8,11 @@ options {
 
 PARSER_BEGIN(HeronSqlParserImpl)
 
-package com.twitter.heron.sql.parser.impl;
+package org.apache.heron.sql.parser.impl;
 
 import org.apache.calcite.sql.validate.*;
 import org.apache.calcite.util.*;
-import com.twitter.heron.sql.parser.*;
+import org.apache.heron.sql.parser.*;
 import java.util.*;
 
 
