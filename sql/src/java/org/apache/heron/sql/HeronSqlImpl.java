@@ -21,9 +21,6 @@ package org.apache.heron.sql;
 import java.util.Map;
 
 import org.apache.calcite.sql.SqlNode;
-import org.apache.heron.sql.parser.HeronParser;
-import org.apache.heron.sql.parser.SqlCreateFunction;
-import org.apache.heron.sql.parser.SqlCreateTable;
 
 public class HeronSqlImpl extends HeronSql {
 
@@ -78,3 +75,4 @@ public class HeronSqlImpl extends HeronSql {
     }
   }
 }
+

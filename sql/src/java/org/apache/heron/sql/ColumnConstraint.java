@@ -17,20 +17,26 @@
  * under the License.
  */
 package org.apache.heron.sql;
+//todo move back to parser
+import org.apache.calcite.sql.SqlLiteral;
+import org.apache.calcite.sql.parser.SqlParserPos;
+import org.apache.calcite.sql.type.SqlTypeName;
+import org.apache.calcite.sql.validate.SqlMonotonicity;
 
+public class ColumnConstraint extends SqlLiteral {
+  private ColumnConstraint(
+      Object value, SqlTypeName typeName, SqlParserPos pos) {
+    super(value, typeName, pos);
+  }
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import static junit.framework.TestCase.assertTrue;
-
-@RunWith(MockitoJUnitRunner.class)
-public class HeronSqlRunnerTest {
-
-
-  @Test
-  public void testThatTestWorks() {
-    assertTrue(true);
+  public static class PrimaryKey extends ColumnConstraint {
+    private final SqlMonotonicity monotonicity;
+    public PrimaryKey(SqlMonotonicity monotonicity, SqlParserPos pos) {
+      super(SqlDDLKeywords.PRIMARY, SqlTypeName.SYMBOL, pos);
+      this.monotonicity = monotonicity;
+    }
+    public SqlMonotonicity monotonicity() {
+      return monotonicity;
+    }
   }
 }

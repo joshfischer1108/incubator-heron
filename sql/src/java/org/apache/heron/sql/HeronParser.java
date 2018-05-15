@@ -16,14 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.heron.sql.parser;
-
+package org.apache.heron.sql;
+//todo move back to parser
 import java.io.StringReader;
 
 import com.google.common.annotations.VisibleForTesting;
 
 import org.apache.calcite.config.Lex;
-import org.apache.heron.sql.parser.impl.HeronSqlParserImpl;
 
 public class HeronParser {
   public static final int DEFAULT_IDENTIFIER_MAX_LENGTH = 128;

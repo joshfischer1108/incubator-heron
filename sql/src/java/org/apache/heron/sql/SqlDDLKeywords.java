@@ -17,20 +17,9 @@
  * under the License.
  */
 package org.apache.heron.sql;
+//todo move back to parser
+import org.apache.calcite.sql.SqlLiteral;
 
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import static junit.framework.TestCase.assertTrue;
-
-@RunWith(MockitoJUnitRunner.class)
-public class HeronSqlRunnerTest {
-
-
-  @Test
-  public void testThatTestWorks() {
-    assertTrue(true);
-  }
+public enum SqlDDLKeywords implements SqlLiteral.SqlSymbol {
+  PRIMARY
 }

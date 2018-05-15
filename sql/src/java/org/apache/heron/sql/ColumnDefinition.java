@@ -17,20 +17,30 @@
  * under the License.
  */
 package org.apache.heron.sql;
+//todo move back to parser
+import java.util.Arrays;
 
+import org.apache.calcite.sql.SqlDataTypeSpec;
+import org.apache.calcite.sql.SqlIdentifier;
+import org.apache.calcite.sql.SqlNodeList;
+import org.apache.calcite.sql.parser.SqlParserPos;
+import org.apache.heron.sql.ColumnConstraint;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+public class ColumnDefinition extends SqlNodeList {
+  public ColumnDefinition(
+      SqlIdentifier name, SqlDataTypeSpec type, ColumnConstraint constraint, SqlParserPos pos) {
+    super(Arrays.asList(name, type, constraint), pos);
+  }
 
-import static junit.framework.TestCase.assertTrue;
+  public String name() {
+    return get(0).toString();
+  }
 
-@RunWith(MockitoJUnitRunner.class)
-public class HeronSqlRunnerTest {
+  public SqlDataTypeSpec type() {
+    return (SqlDataTypeSpec) get(1);
+  }
 
-
-  @Test
-  public void testThatTestWorks() {
-    assertTrue(true);
+  public ColumnConstraint constraint() {
+    return (ColumnConstraint) get(2);
   }
 }

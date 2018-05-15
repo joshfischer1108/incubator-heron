@@ -19,18 +19,28 @@
 package org.apache.heron.sql;
 
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static junit.framework.TestCase.assertTrue;
+import org.apache.calcite.plan.RelOptUtil;
+import org.apache.calcite.rel.RelNode;
+import org.apache.calcite.sql.SqlExplainLevel;
 
-@RunWith(MockitoJUnitRunner.class)
-public class HeronSqlRunnerTest {
+public class HeronRelUtils {
+
+  private static final Logger LOG = LoggerFactory.getLogger(HeronRelUtils.class);
 
 
-  @Test
-  public void testThatTestWorks() {
-    assertTrue(true);
+  public static String explain(final RelNode rel, SqlExplainLevel detailLevel) {
+    String explain = "";
+    try {
+      explain = RelOptUtil.toString(rel);
+    } catch (StackOverflowError e) {
+      LOG.error("StackOverflowError occurred while extracting plan. Please report it to the dev@ mailing list.");
+      LOG.error("RelNode " + rel + " ExplainLevel " + detailLevel, e);
+      LOG.error("Forcing plan to empty string and continue... SQL Runner may not working properly after.");
+    }
+    return explain;
   }
+
 }

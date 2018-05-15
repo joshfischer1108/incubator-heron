@@ -529,7 +529,7 @@ new_http_archive(
 # calcite
 maven_jar(
     name = "apache_calcite",
-    artifact = "org.apache.calcite:calcite-core:1.16.0"
+    artifact = "org.apache.calcite:calcite-core:1.11.0"
 )
 
 maven_jar(
