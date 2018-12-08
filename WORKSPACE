@@ -814,6 +814,7 @@ http_file(
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 
 new_http_archive(
     name = "virtualenv",
@@ -979,16 +980,17 @@ new_http_archive(
 rules_scala_version="a89d44f7ef67d93dedfc9888630f48d7723516f7" # update this as needed
 
 http_archive(
-     name = "io_bazel_rules_scala",
-     url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip"%rules_scala_version,
-     type = "zip",
-     strip_prefix= "rules_scala-%s" % rules_scala_version,
-     sha256 = "e341dc30a397c77e6723a953d4a84539c050b49f163b4c50cf865c698ea598fe"
+             name = "io_bazel_rules_scala",
+             url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip"%rules_scala_version,
+             type = "zip",
+             strip_prefix= "rules_scala-%s" % rules_scala_version,
+             sha256 = "e341dc30a397c77e6723a953d4a84539c050b49f163b4c50cf865c698ea598fe"
 )
 
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 scala_register_toolchains()
 scala_repositories()
