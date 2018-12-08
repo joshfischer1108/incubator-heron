@@ -21,11 +21,10 @@ LINUX_EXECUTE = [
 
 POST_EXECUTE = [
     'ln -sf "$$OUTDIR" "$$TMPF"',
-    'VENV="$${TMPF}/venv"', 
-
+    'VENV="$${TMPF}/venv"',
     '$(location @virtualenv//:virtualenv) --no-download --quiet --clear "$$VENV"',
     'PYTHON="$$VENV/bin/python"',
-    '$$VENV/bin/pip install pex \
+    '$$VENV/bin/pip install -v pex \
             --quiet --no-cache-dir --no-index --build $(@D)/pexbuild \
             --find-links $$(dirname $(location @pex_src//file)) \
             --find-links $$(dirname $(location @wheel_src//file)) \
@@ -34,7 +33,8 @@ POST_EXECUTE = [
     '# Work around setuptools insistance on writing to the source directory,',
     '# which is discouraged by Bazel (and annoying)',
     'cp -r $$(dirname $(location wrapper/setup.py)) $(@D)/.pex_wrapper',
-
+    'echo "LOOK HERE"',
+    'echo $$(dirname $(location @wheel_src//file))',
     '# Use the bootstrapped pex to build pex_wrapper.pex',
     '$$VENV/bin/pex $(@D)/.pex_wrapper \
             --disable-cache --no-index -m pex_wrapper -o $@ \
@@ -42,6 +42,7 @@ POST_EXECUTE = [
             --find-links $$(dirname $(location @setuptools_src//file)) \
             --find-links $$(dirname $(location @requests_src//file)) \
             --find-links $$(dirname $(location @wheel_src//file))',
+    'echo "after pex wrapper"'
 ]
 
 genrule(
