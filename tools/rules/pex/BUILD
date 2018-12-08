@@ -25,7 +25,6 @@ POST_EXECUTE = [
 
     '$(location @virtualenv//:virtualenv) --no-download --quiet --clear "$$VENV"',
     'PYTHON="$$VENV/bin/python"',
-
     '$$VENV/bin/pip install pex \
             --quiet --no-cache-dir --no-index --build $(@D)/pexbuild \
             --find-links $$(dirname $(location @pex_src//file)) \
