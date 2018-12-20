@@ -24,7 +24,7 @@ pex_binary(
     deps = [
         ":heron-ui-lib",
     ],
-    resources = [
+    data = [
         "//heron/tools/ui/resources:templates",
         "//heron/tools/ui/resources:static",
         "//scripts/packages:release_files",

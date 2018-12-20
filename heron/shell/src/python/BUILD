@@ -20,7 +20,7 @@ pex_binary(
     deps = [
         ":heron-shell-lib",
     ],
-    resources = [
+    data = [
         "//heron/shell/assets:assets",
     ],
 )
