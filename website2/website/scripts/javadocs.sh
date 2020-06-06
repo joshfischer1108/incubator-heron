@@ -43,8 +43,6 @@ fi
   `bazel query 'kind("java_test", "heron/...")'` \
   `bazel query 'kind("java_library", "integration_test/...")'`)
 
-
-
 HERON_SRC_FILES=`find $HERON_ROOT_DIR -path "*/org/apache/*" -name "*.java" -not -path "$HERON_ROOT_DIR/tools/*"`
 BACKTYPE_SRC_FILES=`find $HERON_ROOT_DIR -path "*/backtype/storm/*" -name "*.java"`
 APACHE_SRC_FILES=`find $HERON_ROOT_DIR -path "*/org/apache/storm/*" -name "*.java"`
@@ -61,7 +59,6 @@ CONTRIB_JARS=`find $HERON_ROOT_DIR/bazel-bin/contrib/. -name "*\.jar" | tr '\n' 
 
 export CLASSPATH=$GEN_JARS:$SCRIBE_JARS:$PROTO_JARS:$CLOSURE_CLASSES:$CONTRIB_JARS
 
-echo "before java doc command"
 $JAVADOC $FLAGS \
   -encoding "UTF-8" \
   -windowtitle "Heron Java API" \
