@@ -30,15 +30,7 @@ storm_deps_files = [
     "//third_party/java:kryo-neverlink",
 ]
 
-java_doc(
-    name = "heron-storm-javadoc",
-    libs = [":storm-compatibility-java"],
-    pkgs = [
-        "java",
-        "org",
-    ],
-    title = "Heron Storm Compatibility Api Documentation",
-)
+
 
 java_library(
     name = "storm-compatibility-java-neverlink",

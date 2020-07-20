@@ -17,12 +17,12 @@ function platform {
  PLATFORM=darwin
  case "$OSTYPE" in
    darwin*)
-     PLATFORM=darwin
+     PLATFORM=darwin_nostyle
      ;;
    linux*)
-     PLATFORM=ubuntu
+     PLATFORM=ubuntu_nostyle
      if [ -f /etc/redhat-release ] ; then
-       PLATFORM=centos
+       PLATFORM=centos_nostyle
      fi
      ;;
    *)
