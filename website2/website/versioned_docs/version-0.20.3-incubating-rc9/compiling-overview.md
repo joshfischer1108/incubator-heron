@@ -1,7 +1,8 @@
 ---
-id: compiling-overview
+id: version-0.20.3-incubating-rc9-compiling-overview
 title: Compiling Heron
 sidebar_label: Compiling Overview
+original_id: compiling-overview
 ---
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
